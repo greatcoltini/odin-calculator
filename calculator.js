@@ -23,20 +23,69 @@ function divide(a, b)
 
 function operate(operator, a, b)
 {
+    print(a);
+    print(b);
+    display = document.getElementById("display");
+
+    console.log("here");
     switch (operator)
     {
+        
         case "+":
-            add(firstNumber, secondNumber);
+            firstNumber = add(firstNumber, secondNumber);
             break;
         case "-":
-            subtract(firstNumber, secondNumber);
+            firstNumber = subtract(firstNumber, secondNumber);
             break;
         case "*":
-            multiplty(firstNumber, secondNumber);
+            firstNumber = multiplty(firstNumber, secondNumber);
             break;
         case "/":
-            divide(firstNumber, secondNumber);
+            firstNumber = divide(firstNumber, secondNumber);
             break;
+    }
+
+    display.value=firstNumber;
+}
+
+function insertNumbers(number)
+{
+    if (firstNumber == null)
+    {
+        firstNumber = parseInt(number);
+    }
+    else if (secondNumber == null)
+    {
+        if (operator == null)
+        {
+            firstNumber = parseInt(number);
+        }
+        else
+        {
+            secondNumber = parseInt(number);
+            operate(operator, firstNumber, secondNumber);
+        }
 
     }
+    else
+    {
+    }
+
+    display = document.getElementById("display");
+
+    display.value=firstNumber;
 }
+
+function defineOperator(operator)
+{
+    operator = operator;
+    print(operator);
+}
+
+function clear()
+{
+    operator = null;
+    firstNumber = null;
+    secondNumber = null;
+}
+
