@@ -23,28 +23,29 @@ function divide(a, b)
 
 function operate(operator, a, b)
 {
-    print(a);
-    print(b);
     display = document.getElementById("display");
+    console.log(a);
+    console.log(operator);
+    console.log(b);
 
-    console.log("here");
     switch (operator)
     {
-        
         case "+":
-            firstNumber = add(firstNumber, secondNumber);
+            firstNumber = add(a, b);
             break;
         case "-":
-            firstNumber = subtract(firstNumber, secondNumber);
+            firstNumber = subtract(a, b);
             break;
         case "*":
-            firstNumber = multiplty(firstNumber, secondNumber);
+            firstNumber = multiply(a, b);
             break;
         case "/":
-            firstNumber = divide(firstNumber, secondNumber);
+            firstNumber = divide(a, b);
             break;
     }
 
+    operator = null;
+    secondNumber = null;
     display.value=firstNumber;
 }
 
@@ -72,14 +73,12 @@ function insertNumbers(number)
     }
 
     display = document.getElementById("display");
-
     display.value=firstNumber;
 }
 
-function defineOperator(operator)
+function defineOperator(op)
 {
-    operator = operator;
-    print(operator);
+    operator = op;
 }
 
 function clear()
