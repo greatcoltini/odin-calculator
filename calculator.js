@@ -1,5 +1,7 @@
 var firstNumber, secondNumber, operator;
 
+let recalculating = false;
+
 
 // function to parse addition
 function add(a, b)
@@ -30,6 +32,7 @@ function operate()
 {
     var display = document.getElementById("display");
     secondNumber = display.value;
+    var new_firstNumber;
 
     firstNumber = parseInt(firstNumber);
     secondNumber = parseInt(secondNumber);
@@ -39,47 +42,62 @@ function operate()
     switch (operator)
     {
         case "+":
-            firstNumber = add(firstNumber, secondNumber);
+            new_firstNumber = add(firstNumber, secondNumber);
             break;
         case "-":
-            firstNumber = subtract(firstNumber, secondNumber);
+            new_firstNumber = subtract(firstNumber, secondNumber);
             break;
         case "*":
-            firstNumber = multiply(firstNumber, secondNumber);
+            new_firstNumber = multiply(firstNumber, secondNumber);
             break;
         case "/":
-            firstNumber = divide(firstNumber, secondNumber);
+            new_firstNumber = divide(firstNumber, secondNumber);
             break;
     }
 
     operator = null;
     secondNumber = null;
-    display.value=firstNumber;
+    // display.value=firstNumber;
+    display.value = new_firstNumber;
+    firstNumber = new_firstNumber;
+    recalculating = true;
+    // display.value="";
+    console.log(firstNumber);
 }
 
 // When pressing buttons in display, we start generating the number
 function insertNumbers(number)
 {
     var display = document.getElementById("display");
-    display.value = display.value + number;
+    if (recalculating)
+    {
+        display.value = number;
+        recalculating = false;
+    }
+    else {
+        display.value = display.value + number;
+    }
 }
+    
 
 // Function to define operator when an operator button is clicked
 function defineOperator(op)
 {
-    if (secondNumber == null)
+
+    if (firstNumber != null)
     {
+        // operate off the first expression
+        current_op = op;
+        operate();
+
+        operator = current_op;
+    }
+    else {
         var display = document.getElementById("display");
         // when operator is pressed, store first number in display
         firstNumber = display.value;
         operator = op;
         display.value = "";
-    }
-    else
-    {
-        current_op = op;
-        operate();
-        defineOperator(current_op);
     }
 
 }
@@ -91,6 +109,11 @@ function resetCalculation()
     operator = "";
     firstNumber = null;
     secondNumber = null;
-    console.log("finished");
+}
+
+function updateDisplay()
+{
+    var display = document.getElementById("display");
+    display.value = firstNumber;
 }
 
