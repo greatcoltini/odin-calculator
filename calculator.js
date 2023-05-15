@@ -1,5 +1,5 @@
 var firstNumber, secondNumber, operator;
-var display = document.getElementById("display");
+
 
 // function to parse addition
 function add(a, b)
@@ -28,6 +28,7 @@ function divide(a, b)
 // When the equals button is pressed, we operate on the numbers
 function operate()
 {
+    var display = document.getElementById("display");
     secondNumber = display.value;
 
     firstNumber = parseInt(firstNumber);
@@ -59,24 +60,37 @@ function operate()
 // When pressing buttons in display, we start generating the number
 function insertNumbers(number)
 {
+    var display = document.getElementById("display");
     display.value = display.value + number;
 }
 
 // Function to define operator when an operator button is clicked
 function defineOperator(op)
 {
-    // when operator is pressed, store first number in display
-    firstNumber = display_text.value;
-    operator = op;
-    display_text.value = "";
+    if (secondNumber == null)
+    {
+        var display = document.getElementById("display");
+        // when operator is pressed, store first number in display
+        firstNumber = display.value;
+        operator = op;
+        display.value = "";
+    }
+    else
+    {
+        current_op = op;
+        operate();
+        defineOperator(current_op);
+    }
+
 }
 
 function resetCalculation()
 {
+    var display = document.getElementById("display");
     display.value = "";
     operator = "";
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = null;
+    secondNumber = null;
     console.log("finished");
 }
 
