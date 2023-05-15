@@ -46,11 +46,14 @@
 		<input type="button" value="*" onclick="defineOperator('*')">
 		<br>
 		<input type="button" value="0" onclick="insertNumbers('0')">
-		<input type="button" value="." onclick="defineOperator('.')">
-		<input type="button" value="C" onclick="clear()">
+		<input type="button" value="." onclick="insertNumbers('.')">
+		<input type="button" value="C" onclick="resetCalculation()">
 		<input type="button" value="/" onclick="defineOperator('/')">
 		<br>
-		<input type="button" value="=" onclick="calculate()">
+		<input type="button" value="=" onclick="operate()">
 	</div>
+
+
+
 </body>
 </html>

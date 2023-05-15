@@ -1,46 +1,53 @@
-var firstNumber, secondNumber, operator, displayValue;
+var firstNumber, secondNumber, operator;
+var display = document.getElementById("display").value;
 
-
+// function to parse addition
 function add(a, b)
 {
     return a + b;
 }
 
+// function to parse subtraction
 function subtract(a, b)
 {
     return a - b;
 }
 
+// function to parse multiplication
 function multiply(a, b)
 {
     return a * b;
 }
 
+// function to parse division
 function divide(a, b)
 {
     return a / b;
 }
 
-function operate(operator, a, b)
+// When the equals button is pressed, we operate on the numbers
+function operate()
 {
-    display = document.getElementById("display");
-    console.log(a);
-    console.log(operator);
-    console.log(b);
+    secondNumber = display.value;
+
+    firstNumber = parseInt(firstNumber);
+    secondNumber = parseInt(secondNumber);
+
+    console.log(firstNumber + " " + operator + " " + secondNumber);
 
     switch (operator)
     {
         case "+":
-            firstNumber = add(a, b);
+            firstNumber = add(firstNumber, secondNumber);
             break;
         case "-":
-            firstNumber = subtract(a, b);
+            firstNumber = subtract(firstNumber, secondNumber);
             break;
         case "*":
-            firstNumber = multiply(a, b);
+            firstNumber = multiply(firstNumber, secondNumber);
             break;
         case "/":
-            firstNumber = divide(a, b);
+            firstNumber = divide(firstNumber, secondNumber);
             break;
     }
 
@@ -49,42 +56,27 @@ function operate(operator, a, b)
     display.value=firstNumber;
 }
 
+// When pressing buttons in display, we start generating the number
 function insertNumbers(number)
 {
-    if (firstNumber == null)
-    {
-        firstNumber = parseInt(number);
-    }
-    else if (secondNumber == null)
-    {
-        if (operator == null)
-        {
-            firstNumber = parseInt(number);
-        }
-        else
-        {
-            secondNumber = parseInt(number);
-            operate(operator, firstNumber, secondNumber);
-        }
-
-    }
-    else
-    {
-    }
-
-    display = document.getElementById("display");
-    display.value=firstNumber;
+    display.value = display.value + number;
 }
 
+// Function to define operator when an operator button is clicked
 function defineOperator(op)
 {
+    // when operator is pressed, store first number in display
+    firstNumber = display_text.value;
     operator = op;
+    display_text.value = "";
 }
 
-function clear()
+function resetCalculation()
 {
-    operator = null;
-    firstNumber = null;
-    secondNumber = null;
+    display.value = "";
+    operator = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    console.log("finished");
 }
 
