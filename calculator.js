@@ -1,5 +1,5 @@
 var firstNumber, secondNumber, operator;
-var display = document.getElementById("display").value;
+var display = document.getElementById("display");
 
 // function to parse addition
 function add(a, b)
