@@ -31,12 +31,6 @@ function divide(a, b)
 function operate()
 {
     var display = document.getElementById("display");
-
-    if (!operator || !secondNumber)
-    {
-        display.value = firstNumber;
-        return;
-    }
     
     secondNumber = display.value;
     var new_firstNumber;
