@@ -116,5 +116,6 @@ function updateDisplay()
 {
     var display = document.getElementById("display");
     display.value = firstNumber;
+    firstNumber = null;
 }
 
