@@ -27,7 +27,7 @@
 
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="calc">
 		<h1>Calculator</h1>
 		<input type="text" id="display" readonly="readonly" value="">
 		<input type="button" value="1" onclick="insertNumbers('1')">
@@ -50,7 +50,7 @@
 		<input type="button" value="C" onclick="resetCalculation()">
 		<input type="button" value="/" onclick="defineOperator('/')">
 		<br>
-		<input type="button" value="=" onclick="operate(), updateDisplay()">
+		<input type="button" value="=" onclick="operate('='), updateDisplay()">
 	</div>
 
 

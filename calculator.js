@@ -28,7 +28,7 @@ function divide(a, b)
 }
 
 // When the equals button is pressed, we operate on the numbers
-function operate()
+function operate(...args)
 {
     var display = document.getElementById("display");
     
@@ -56,6 +56,12 @@ function operate()
             break;
     }
 
+    // if we are operating with finality, run function to generate display of previous output
+    if (args == '=')
+    {
+        previousDisplay(new_firstNumber);
+    }
+
     operator = null;
     secondNumber = null;
     // display.value=firstNumber;
@@ -64,6 +70,21 @@ function operate()
     recalculating = true;
     // display.value="";
     console.log(firstNumber);
+}
+
+function previousDisplay(n_f_n)
+{
+    
+    const container = document.getElementById("calc");
+    const current_display = document.getElementById("display");
+
+    const prev_outputs = document.createElement("input");
+    prev_outputs.className = "prev";
+    prev_outputs.type = "text";
+    prev_outputs.value = firstNumber + " " + operator + " " + secondNumber + ' = ' + n_f_n;
+    prev_outputs.ariaReadOnly = true;
+
+    container.insertBefore(prev_outputs, current_display);
 }
 
 // When pressing buttons in display, we start generating the number
@@ -110,6 +131,12 @@ function resetCalculation()
     operator = "";
     firstNumber = null;
     secondNumber = null;
+
+    Array.prototype.slice.call(document.getElementsByClassName('prev')).forEach(
+        function(item) {
+          item.parentNode.removeChild(item);
+          // or item.parentNode.removeChild(item); for older browsers (Edge-)
+      });
 }
 
 function updateDisplay()
