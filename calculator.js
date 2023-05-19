@@ -124,6 +124,7 @@ function defineOperator(op)
 
 }
 
+// reset the calculation and clear previous output screens
 function resetCalculation()
 {
     var display = document.getElementById("display");
@@ -134,11 +135,12 @@ function resetCalculation()
 
     Array.prototype.slice.call(document.getElementsByClassName('prev')).forEach(
         function(item) {
-          item.parentNode.removeChild(item);
+          item.remove();
           // or item.parentNode.removeChild(item); for older browsers (Edge-)
       });
 }
 
+// updates display on equal press
 function updateDisplay()
 {
     var display = document.getElementById("display");
