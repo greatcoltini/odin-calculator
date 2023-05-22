@@ -40,10 +40,18 @@ function operate(...args)
             return;
         }
     }
+    
 
     var display = document.getElementById("display");
     
     secondNumber = display.value;
+
+    // check if double operator press happens
+    if (!secondNumber)
+    {
+        return;
+    }
+    
     var new_firstNumber;
 
     firstNumber = parseInt(firstNumber);
@@ -121,7 +129,7 @@ function defineOperator(op)
     {
         // operate off the first expression
         current_op = op;
-        operate();
+        operate(op);
 
         operator = current_op;
     }
