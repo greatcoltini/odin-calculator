@@ -1,5 +1,7 @@
 var firstNumber, secondNumber, operator;
 
+const operatorSet = ['+', '-', '/', '*'];
+
 let recalculating = false;
 
 
@@ -30,6 +32,15 @@ function divide(a, b)
 // When the equals button is pressed, we operate on the numbers
 function operate(...args)
 {
+    // check if equal pressed without operator
+    if (args == '=')
+    {
+        if (!operator)
+        {
+            return;
+        }
+    }
+
     var display = document.getElementById("display");
     
     secondNumber = display.value;
@@ -143,8 +154,40 @@ function resetCalculation()
 // updates display on equal press
 function updateDisplay()
 {
-    var display = document.getElementById("display");
-    display.value = firstNumber;
-    firstNumber = null;
+    if (!firstNumber)
+    {
+        return;
+    }
+    else 
+    {
+        var display = document.getElementById("display");
+        display.value = firstNumber;
+        firstNumber = null;
+    }
 }
 
+// add key input for various keys
+document.addEventListener('keydown', function(event) {
+    if (event.key == "Enter")
+    {
+        operate('=');
+        updateDisplay();
+    }
+    else if (event.key == "Backspace")
+    {
+
+    }
+    else if (event.key == "Delete")
+    {
+        resetCalculation();
+    }
+    // if keys are numkeys
+    else if (isFinite(event.key))
+    {
+        insertNumbers(event.key);
+    }
+    else if (operatorSet.includes(event.key))
+    {
+        defineOperator(event.key);
+    }
+});
