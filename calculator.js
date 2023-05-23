@@ -183,7 +183,8 @@ document.addEventListener('keydown', function(event) {
     }
     else if (event.key == "Backspace")
     {
-
+        var display = document.getElementById("display");
+        display.value = display.value.slice(0, display.value.length - 1);
     }
     else if (event.key == "Delete")
     {
