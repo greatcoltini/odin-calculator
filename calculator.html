@@ -2,12 +2,23 @@
 <html>
 <head>
 	<title>Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<style type="text/css">
 		.container {
 			margin: 0 auto;
 			width: 300px;
 			text-align: center;
 		}
+
+		.container-wrapper {
+			background-color: #333333;
+			border-radius: 5px;
+			padding: 20px;
+			margin: 50px auto;
+			width: 300px;
+			color: #ffffff;
+		  }
+
 		input[type="button"] {
 			width: 50px;
 			height: 50px;
@@ -21,39 +32,112 @@
 			text-align: right;
 			margin-bottom: 10px;
 		}
+
+		.header {
+			background-color: #e6f3ff;
+			padding: 15px;
+		}
+	  
+		.header h1 {
+			font-size: 24px;
+			color: #333;
+			margin: 0;
+			display: inline-block;
+		}
+
+		.header .calculator-icon {
+			width: 24px;
+			height: 24px;
+			margin-right: 10px;
+			vertical-align: middle;
+			transition: opacity 0.3s ease;
+		  }
+	  
+		.header .calculator-icon:hover {
+			opacity: 0.7;
+		}
+
+		.calculator-button {
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			margin: 5px;
+			text-align: center;
+			font-size: 24px;
+			color: #ffffff;
+			opacity: 1;
+			transition: opacity 0.3s ease;
+		  }
+	  
+		  .calculator-button:hover {
+			opacity: 0.7;
+		  }
+	  
+		  .button-1 {
+			background-color: #ff5f5f;
+		  }
+	  
+		  .button-2 {
+			background-color: #ffb145;
+		  }
+	  
+		  .button-3 {
+			background-color: #1eb82e;
+		  }
+
+		  .button-4 {
+			background-color: #69d2e7;
+		  }
+
+		  .button-5 {
+			background-color: #12282d;
+			width: 100px;
+			height: 300px;
+		  }
+		  
 	</style>
 
 	<script src="calculator.js"></script>
 
 </head>
 <body>
-	<div class="container" id="calc">
+	<div class="header">
+		<div class="container">
+			<img src="calculator-icon.png" alt="Calculator Icon" class="calculator-icon">
+		  	<h1>Calculator Website</h1>
+		</div>
+	  </div>
+
+	<div class="container-wrapper" id="calc">
 		<h1>Calculator</h1>
 		<input type="text" id="display" readonly="readonly" value="">
 		<input type="button" value="1" onclick="insertNumbers('1')">
 		<input type="button" value="2" onclick="insertNumbers('2')">
 		<input type="button" value="3" onclick="insertNumbers('3')">
-		<input type="button" value="+" onclick="defineOperator('+')">
+		<input type="button" class="calculator-button button-3" value="+" onclick="defineOperator('+')">
 		<br>
 		<input type="button" value="4" onclick="insertNumbers('4')">
 		<input type="button" value="5" onclick="insertNumbers('5')">
 		<input type="button" value="6" onclick="insertNumbers('6')">
-		<input type="button" value="-" onclick="defineOperator('-')">
+		<input type="button" class="calculator-button button-1" value="-" onclick="defineOperator('-')">
 		<br>
 		<input type="button" value="7" onclick="insertNumbers('7')">
 		<input type="button" value="8" onclick="insertNumbers('8')">
 		<input type="button" value="9" onclick="insertNumbers('9')">
-		<input type="button" value="*" onclick="defineOperator('*')">
+		<input type="button" class="calculator-button button-2" value="*" onclick="defineOperator('*')">
 		<br>
 		<input type="button" value="0" onclick="insertNumbers('0')">
 		<input type="button" value="." onclick="insertNumbers('.')">
 		<input type="button" value="C" onclick="resetCalculation()">
-		<input type="button" value="/" onclick="defineOperator('/')">
+		<input type="button" class="calculator-button button-4" value="/" onclick="defineOperator('/')">
 		<br>
-		<input type="button" value="=" onclick="operate('='), updateDisplay()">
+		<input type="button" class="calculator-button button-5" value="=" onclick="operate('='), updateDisplay()">
 	</div>
 
-
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
 
 </body>
 </html>
