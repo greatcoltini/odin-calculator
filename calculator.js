@@ -54,8 +54,8 @@ function operate(...args)
     
     var new_firstNumber;
 
-    firstNumber = parseInt(firstNumber);
-    secondNumber = parseInt(secondNumber);
+    firstNumber = parseFloat(firstNumber);
+    secondNumber = parseFloat(secondNumber);
 
     console.log(firstNumber + " " + operator + " " + secondNumber);
 
@@ -110,12 +110,18 @@ function previousDisplay(n_f_n)
 function insertNumbers(number)
 {
     var display = document.getElementById("display");
+
     if (recalculating)
     {
         display.value = number;
         recalculating = false;
     }
     else {
+        // only display one decimal
+        if (display.value.includes(".") && number == ".")
+        {
+            return;
+        }
         display.value = display.value + number;
     }
 }
