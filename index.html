@@ -118,6 +118,16 @@
 			border-radius: 30%;
 		}
 
+		.clicked {
+			opacity : 0.5;
+			transition : opacity 0.3s; 
+		}
+
+		.selected-operator {
+			opacity : 0.1;
+			transition: opacity 0.3s;
+		}
+
 		h1 {
 			text-align: center;
 		}
@@ -138,25 +148,25 @@
 	<div class="container-wrapper" id="calc">
 		<h1>Calculator</h1>
 		<input type="text" id="display" readonly="readonly" value="">
-		<input type="button" class="button-number" value="1" onclick="insertNumbers('1')">
-		<input type="button" class="button-number" value="2" onclick="insertNumbers('2')">
-		<input type="button" class="button-number" value="3" onclick="insertNumbers('3')">
-		<input type="button" class="calculator-button button-3" value="+" onclick="defineOperator('+')">
+		<input id="1" type="button" class="button-number" value="1" onclick="insertNumbers('1')">
+		<input id="2" type="button" class="button-number" value="2" onclick="insertNumbers('2')">
+		<input id="3" type="button" class="button-number" value="3" onclick="insertNumbers('3')">
+		<input id="+" type="button" class="calculator-button button-3" value="+" onclick="defineOperator('+')">
 		<br>
-		<input type="button" class="button-number" value="4" onclick="insertNumbers('4')">
-		<input type="button" class="button-number" value="5" onclick="insertNumbers('5')">
-		<input type="button" class="button-number" value="6" onclick="insertNumbers('6')">
-		<input type="button" class="calculator-button button-1" value="-" onclick="defineOperator('-')">
+		<input id="4" type="button" class="button-number" value="4" onclick="insertNumbers('4')">
+		<input id="5" type="button" class="button-number" value="5" onclick="insertNumbers('5')">
+		<input id="6" type="button" class="button-number" value="6" onclick="insertNumbers('6')">
+		<input id="-" type="button" class="calculator-button button-1" value="-" onclick="defineOperator('-')">
 		<br>
-		<input type="button" class="button-number" value="7" onclick="insertNumbers('7')">
-		<input type="button" class="button-number" value="8" onclick="insertNumbers('8')">
-		<input type="button" class="button-number" value="9" onclick="insertNumbers('9')">
-		<input type="button" class="calculator-button button-2" value="*" onclick="defineOperator('*')">
+		<input id="7" type="button" class="button-number" value="7" onclick="insertNumbers('7')">
+		<input id="8" type="button" class="button-number" value="8" onclick="insertNumbers('8')">
+		<input id="9" type="button" class="button-number" value="9" onclick="insertNumbers('9')">
+		<input id="*" type="button" class="calculator-button button-2" value="*" onclick="defineOperator('*')">
 		<br>
-		<input type="button" class="button-zero" value="0" onclick="insertNumbers('0')">
+		<input id="0" type="button" class="button-zero" value="0" onclick="insertNumbers('0')">
 		<input type="button" class="button-number" value="." onclick="insertNumbers('.')">
 		<input type="button" class="button-number" value="C" onclick="resetCalculation()">
-		<input type="button" class="calculator-button button-4" value="/" onclick="defineOperator('/')">
+		<input id="/" type="button" class="calculator-button button-4" value="/" onclick="defineOperator('/')">
 		<br>
 		<input type="button" class="calculator-button button-5" value="=" onclick="operate('='), updateDisplay()">
 	</div>

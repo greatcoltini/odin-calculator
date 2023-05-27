@@ -81,6 +81,10 @@ function operate(...args)
         previousDisplay(new_firstNumber);
     }
 
+    // remove selected operator class
+    let selectedOps = document.getElementsByClassName("selected-operator");
+    selectedOps.forEach(item => item.classList.remove("selected-operator"));
+
     operator = null;
     secondNumber = null;
     // display.value=firstNumber;
@@ -109,6 +113,8 @@ function previousDisplay(n_f_n)
 // When pressing buttons in display, we start generating the number
 function insertNumbers(number)
 {
+    handleClick(number);
+
     var display = document.getElementById("display");
 
     if (recalculating)
@@ -143,7 +149,10 @@ function defineOperator(op)
         var display = document.getElementById("display");
         // when operator is pressed, store first number in display
         firstNumber = display.value;
+        // add operator pressed indication
         operator = op;
+        var operatorEle = document.getElementById(op);
+        operatorEle.classList.add("selected-operator");
         display.value = "";
     }
 
@@ -206,3 +215,12 @@ document.addEventListener('keydown', function(event) {
         defineOperator(event.key);
     }
 });
+
+function handleClick(elementID) {
+    var element = document.getElementById(elementID);
+    element.classList.add("clicked");
+  
+    setTimeout(function() {
+      element.classList.remove("clicked");
+    }, 300);
+  }
