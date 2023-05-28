@@ -82,8 +82,11 @@ function operate(...args)
     }
 
     // remove selected operator class
-    let selectedOps = document.getElementsByClassName("selected-operator");
-    selectedOps.forEach(item => item.classList.remove("selected-operator"));
+    const selectedOps = document.getElementsByClassName("calculator-button");
+    for (let i = 0; i < selectedOps.length; i++)
+    {
+        selectedOps[i].classList.remove('selected-operator');
+    }
 
     operator = null;
     secondNumber = null;
