@@ -144,6 +144,9 @@ function defineOperator(op)
     {
         // operate off the first expression
         current_op = op;
+        // run method to apply hover
+        applyHoverOperator(op);
+
         operate(op);
 
         operator = current_op;
@@ -154,10 +157,29 @@ function defineOperator(op)
         firstNumber = display.value;
         // add operator pressed indication
         operator = op;
-        var operatorEle = document.getElementById(op);
-        operatorEle.classList.add("selected-operator");
+
+        applyHoverOperator(op)
+
+        
         display.value = "";
     }
+
+}
+
+// method to apply hover, first checks if there is currently a selected op
+function applyHoverOperator(op)
+{
+    const operatorSelected = document.getElementsByClassName("calculator-button");
+    if (operatorSelected.length > 0)
+    {
+        for (let i = 0; i < operatorSelected.length; i += 1)
+        {
+            operatorSelected[i].classList.remove("selected-operator");
+        }
+    }
+
+    var operatorEle = document.getElementById(op)
+    operatorEle.classList.add('selected-operator');
 
 }
 
